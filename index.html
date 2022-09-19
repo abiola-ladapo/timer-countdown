@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Countdown clock</title>
+  </head>
+  <body>
+    <div class="bd">
+      <div class="time">
+        <h1 class="name">Tee's Resort</h1>
+        <h1>We are <span id="yell"> Launching</span> soon...</h1>
+        <div class="tim">
+          <div id="days">
+            00
+            <p>days</p>
+          </div>
+          <span>:</span>
+          <div id="hours">
+            00
+            <p>hrs</p>
+          </div>
+          <span>:</span>
+          <div id="mins">
+            00
+            <p>mins</p>
+          </div>
+          <span>:</span>
+          <div id="secs">
+            00
+            <p>secs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var countDownDate = new Date("October 17, 2022 00:00:00").getTime();
+      var x = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        // console.log(distance);
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML = days + "days";
+        document.getElementById("hours").innerHTML = hours + "hrs";
+        document.getElementById("mins").innerHTML = mins + "mins";
+        document.getElementById("secs").innerHTML = secs + "secs";
+
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementsByClassName("tim").innerHTML =
+            "It is Launch Time!!!!!";
+        }
+      });
+    </script>
+  </body>
+</html>
